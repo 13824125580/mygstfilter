@@ -82,7 +82,7 @@ DIST_COMMON = INSTALL NEWS README AUTHORS ChangeLog \
 	$(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/configure $(am__configure_deps) \
 	$(srcdir)/config.h.in COPYING compile config.guess config.sub \
-	depcomp install-sh missing ltmain.sh
+	install-sh missing ltmain.sh
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
@@ -192,13 +192,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin/missing aclocal-1.14
+ACLOCAL = ${SHELL} /home/zilong/WorkSpace/mygstfilter/gst-plugin/missing aclocal-1.14
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 1
 AR = ar
-AUTOCONF = ${SHELL} /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin/missing autoconf
-AUTOHEADER = ${SHELL} /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin/missing autoheader
-AUTOMAKE = ${SHELL} /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin/missing automake-1.14
+AUTOCONF = ${SHELL} /home/zilong/WorkSpace/mygstfilter/gst-plugin/missing autoconf
+AUTOHEADER = ${SHELL} /home/zilong/WorkSpace/mygstfilter/gst-plugin/missing autoheader
+AUTOMAKE = ${SHELL} /home/zilong/WorkSpace/mygstfilter/gst-plugin/missing automake-1.14
 AWK = gawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
@@ -236,7 +236,7 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = 
-MAKEINFO = ${SHELL} /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin/missing makeinfo
+MAKEINFO = ${SHELL} /home/zilong/WorkSpace/mygstfilter/gst-plugin/missing makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -255,17 +255,17 @@ PACKAGE_VERSION = 1.0.0
 PATH_SEPARATOR = :
 PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
-PKG_CONFIG_PATH = /usr/lib/pkgconfig
+PKG_CONFIG_PATH = 
 RANLIB = ranlib
 SED = /bin/sed
 SET_MAKE = 
 SHELL = /bin/sh
 STRIP = strip
 VERSION = 1.0.0
-abs_builddir = /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin
-abs_srcdir = /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin
-abs_top_builddir = /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin
-abs_top_srcdir = /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin
+abs_builddir = /home/zilong/WorkSpace/mygstfilter/gst-plugin
+abs_srcdir = /home/zilong/WorkSpace/mygstfilter/gst-plugin
+abs_top_builddir = /home/zilong/WorkSpace/mygstfilter/gst-plugin
+abs_top_srcdir = /home/zilong/WorkSpace/mygstfilter/gst-plugin
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_DUMPBIN = 
@@ -294,7 +294,7 @@ host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/zilong/WorkSpace/gstreamer/plugin/gst-template/gst-plugin/install-sh
+install_sh = ${SHELL} /home/zilong/WorkSpace/mygstfilter/gst-plugin/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
