@@ -30,7 +30,6 @@ bus_call (GstBus     *bus,
       break;
     }
     default:
-      g_print("%s line %d.msg = %d.\n", __func__, __LINE__, GST_MESSAGE_TYPE (msg));
       break;
   }
 
@@ -66,31 +65,21 @@ main (gint   argc,
   gst_object_unref (bus);
 
   filesrc  = gst_element_factory_make ("filesrc", "my_filesource");
-  decoder  = gst_element_factory_make ("myfilter", "my_decoder");
+  decoder  = gst_element_factory_make ("mad", "my_decoder");
 
   /* putting an audioconvert element here to convert the output of the
    * decoder into a format that my_filter can handle (we are assuming it
    * will handle any sample rate here though) */
-  convert1 = gst_element_factory_make ("myfilter", "audioconvert1");
-
-  /* use "identity" here for a filter that does nothing */
-  filter   = gst_element_factory_make ("myfilter", "myfilter");
 
   /* there should always be audioconvert and audioresample elements before
    * the audio sink, since the capabilities of the audio sink usually vary
    * depending on the environment (output used, sound card, driver etc.) */
-  convert2 = gst_element_factory_make ("myfilter", "audioconvert2");
-  resample = gst_element_factory_make ("myfilter", "audioresample");
   sink     = gst_element_factory_make ("pulsesink", "audiosink");
 
   if (!sink || !decoder) {
     g_print ("Decoder or output could not be found - check your install\n");
     return -1;
-  } else if (!convert1 || !convert2 || !resample) {
-    g_print ("Could not create audioconvert or audioresample element, "
-             "check your installation\n");
-    return -1;
-  } else if (!filter) {
+  } else if (!filesrc) {
     g_print ("Your self-written filter could not be found. Make sure it "
              "is installed correctly in $(libdir)/gstreamer-1.0/ or "
              "~/.gstreamer-1.0/plugins/ and that gst-inspect-1.0 lists it. "
@@ -101,12 +90,10 @@ main (gint   argc,
 
   g_object_set (G_OBJECT (filesrc), "location", argv[1], NULL);
 
-  gst_bin_add_many (GST_BIN (pipeline), filesrc, decoder, convert1, filter,
-                    convert2, resample, sink, NULL);
+  gst_bin_add_many (GST_BIN (pipeline), filesrc, decoder, sink, NULL);
 
   /* link everything together */
-  if (!gst_element_link_many (filesrc, decoder, convert1, filter, convert2,
-                              resample, sink, NULL)) {
+  if (!gst_element_link_many (filesrc, decoder, sink, NULL)) {
     g_print ("Failed to link one or more elements!\n");
     return -1;
   }
